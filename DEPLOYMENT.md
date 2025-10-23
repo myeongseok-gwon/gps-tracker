@@ -2,7 +2,7 @@
 
 ## 🚀 Deploy to Vercel (Recommended)
 
-### Option 1: Deploy via Vercel CLI
+### Option 1: Deploy via Vercel CLI (Fixed Dependencies)
 
 1. **Install Vercel CLI:**
    ```bash
@@ -14,19 +14,38 @@
    vercel login
    ```
 
-3. **Deploy from project directory:**
+3. **Deploy with fixed dependencies:**
    ```bash
    cd gps-tracker
-   vercel
+   npm install --legacy-peer-deps
+   npm run build
+   vercel --prod
    ```
 
-4. **Follow the prompts:**
-   - Set up and deploy? `Y`
-   - Which scope? (your account)
-   - Link to existing project? `N`
-   - Project name: `gps-tracker` (or your preferred name)
-   - Directory: `./`
-   - Override settings? `N`
+4. **Or use the deployment script:**
+   ```bash
+   cd gps-tracker
+   ./scripts/deploy.sh
+   ```
+
+### Option 2: Deploy via Vercel Dashboard
+
+1. **Push to GitHub:**
+   ```bash
+   git init
+   git add .
+   git commit -m "GPS Tracker - Production Ready"
+   git remote add origin https://github.com/yourusername/gps-tracker.git
+   git push -u origin main
+   ```
+
+2. **Connect to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your GitHub repository
+   - Vercel will auto-detect the Vite configuration
+   - **Important**: Add build command: `npm run build --legacy-peer-deps`
+   - Click "Deploy"
 
 ### Option 2: Deploy via GitHub
 
